@@ -4,7 +4,7 @@
 ### Work in Progress. This repo is going through a major refactor. 
 
 
-## Setup
+## Setup (Docker coming in the distant future)
 
 ```
 conda create -n sentiment_analysis python=3.6
