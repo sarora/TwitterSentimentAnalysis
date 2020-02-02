@@ -1,6 +1,6 @@
 import nltk
 import random
-#from nltk.corpus import movie_reviews
+# from nltk.corpus import movie_reviews
 from nltk.classify.scikitlearn import SklearnClassifier
 import pickle
 from sklearn.naive_bayes import MultinomialNB, BernoulliNB
@@ -9,9 +9,6 @@ from sklearn.svm import SVC, LinearSVC, NuSVC
 from nltk.classify import ClassifierI
 from statistics import mode
 from nltk.tokenize import word_tokenize
-
-
-# In[5]:
 
 
 #### Combining algorithms and choosing by creating a sort of voting system,
@@ -39,15 +36,9 @@ class VoteClassifier(ClassifierI):
         return conf
 
 
-# In[6]:
-
-
 documents_f = open("pickled_algos/documents.pickle", "rb")
 documents = pickle.load(documents_f)
 documents_f.close()
-
-
-
 
 word_features5k_f = open("pickled_algos/word_features5k.pickle", "rb")
 word_features = pickle.load(word_features5k_f)
@@ -67,34 +58,25 @@ open_file = open("pickled_algos/originalnaivebayes5k.pickle", "rb")
 classifier = pickle.load(open_file)
 open_file.close()
 
-
 open_file = open("pickled_algos/MNB_classifier5k.pickle", "rb")
 MNB_classifier = pickle.load(open_file)
 open_file.close()
-
-
 
 open_file = open("pickled_algos/BernoulliNB_classifier5k.pickle", "rb")
 BernoulliNB_classifier = pickle.load(open_file)
 open_file.close()
 
-
 open_file = open("pickled_algos/LogisticRegression_classifier5k.pickle", "rb")
 LogisticRegression_classifier = pickle.load(open_file)
 open_file.close()
-
 
 open_file = open("pickled_algos/LinearSVC_classifier5k.pickle", "rb")
 LinearSVC_classifier = pickle.load(open_file)
 open_file.close()
 
-
 open_file = open("pickled_algos/SGDC_classifier5k.pickle", "rb")
 SGDC_classifier = pickle.load(open_file)
 open_file.close()
-
-
-
 
 voted_classifier = VoteClassifier(classifier,
                                   LinearSVC_classifier,
@@ -102,6 +84,7 @@ voted_classifier = VoteClassifier(classifier,
                                   BernoulliNB_classifier,
                                   LogisticRegression_classifier)
 
+
 def sentiment(text):
     feats = find_features(text)
-    return voted_classifier.classify(feats),voted_classifier.confidence(feats)
+    return voted_classifier.classify(feats), voted_classifier.confidence(feats)
