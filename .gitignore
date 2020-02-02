@@ -1,0 +1,14 @@
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# cache
+__pycache__
+.cache
+
+.venv/
+Pipfile
+Pipfile.lock
+environment.yaml
+.tox
