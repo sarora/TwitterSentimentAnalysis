@@ -16,7 +16,7 @@ INSTALL_REQUIRES = [
     "numpy ==1.17.3",
     "pandas ==0.23.4",
     "scikit-learn ==0.21.3",
-    "spacy ==2.0.16",
+    "spacy ==2.2",
     "ftfy ==5.6.0",
     "imbalanced-learn ==0.5.0",
     "tqdm",
